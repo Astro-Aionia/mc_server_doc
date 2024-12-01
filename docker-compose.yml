@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  mc:
+    image: itzg/minecraft-server
+    container_name: onegocraft-1.21.3
+    ports:
+      - 25565:25565
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      VERSION: "1.21.3"
+      MEMORY: 4
+      VIEW_DISTANCE: 8
+      ENABLE_WHITELIST: "TRUE"
+      ENFORCE_WHITELIST: "TRUE"
+      OPS: ""
+      ONLINE_MODE: "False"
+      SERVER_NAME: "OnegoCraft"
+      MOTD: "MOMOMER"
+      ICON: ""
+      OVERRIDE_SERVER_PROPERTIES: "TRUE"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      # attach a directory relative to the directory containing this compose file
+      - ./minecraft-data:/data
